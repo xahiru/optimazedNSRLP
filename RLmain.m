@@ -59,6 +59,10 @@ DB_VALID_ACTIONS = getValidActionTwo(GTwo,numberOfNodes,serviceIndexLegth,virusS
 % length(B_VALID_ACTIONS)
 toc
 
+%% Tets2
+tic
+ ACTIONS  = getParetoFrontsTwo( AB_VALID_ACTIONS,DB_VALID_ACTIONS, GTwo, DEFENDER )
+toc
 %% Do Qlearning
 
 %
@@ -108,10 +112,10 @@ for m = 1 : 2
                 D_PARETO_ACTIONS = getParetoFronts(A_VALID_ACTIONS, D_VALID_ACTIONS, G1, DEFENDER);
             end
             % Choose Actions
-            A_ACTION = [randi(size(A_PARETO_ACTIONS,1)), 0]; 
+            A_ACTION = [randi(length(A_PARETO_ACTIONS(:,1))), 0]; 
             
             if n == 2 || n ==3
-                D_ACTION = [randi(size(D_PARETO_ACTIONS,1)), 0];
+                D_ACTION = [randi(length(D_PARETO_ACTIONS(:,1))), 0];
             end
             % A_ACTION = getQTableAction(G1, A_PARETO_ACTIONS, ATTACKER, QTABLE);    
             if n == 1 || n == 2

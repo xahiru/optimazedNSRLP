@@ -16,7 +16,7 @@ service_links2 = 0;
 
 if player == ATTACKER
     maintanance_cost = length(find(~G(:,1:serviceIndexLength))) + length(find(G(:,virusStatColIndex)));
-    G = ~G;
+%    G = ~G;
 %    cols = ~G(:,1:serviceIndexLength);
 % else
 
