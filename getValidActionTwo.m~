@@ -122,7 +122,7 @@ if player == DEFENDER
                         % new matrix
                         endIndex = length(col);
                         ACTIONS(actionsIndex:endIndex,1:2) =  [row,col];
-%                         ACTIONS(actionsIndex:endIndex,3) = 1;
+                        ACTIONS(actionsIndex:endIndex,3) = 1;
                         
                         
                         ACTIONS(actionsIndex:endIndex,6) =  0 ;
@@ -140,7 +140,7 @@ if player == DEFENDER
                               link_weight_diff = 0;
                             end
                             
-%                              ACTIONS(m,4) = col(m);
+                             ACTIONS(m,4) = col(m);
                              ACTIONS(m,5) = link_weight_diff;
                              
                         end
@@ -157,8 +157,8 @@ if player == DEFENDER
                     if (points >= virus_removal_cost && ~isempty(row))
                         ACTIONS(actionsIndex:endIndex,1) =  row; 
                         ACTIONS(actionsIndex:endIndex,2) =  virusStatColIndex;
-%                         ACTIONS(actionsIndex:endIndex,3) = 2;
-%                         ACTIONS(actionsIndex:endIndex,4) = 1;
+                        ACTIONS(actionsIndex:endIndex,3) = 2;
+                        ACTIONS(actionsIndex:endIndex,4) = 1;
                         ACTIONS(actionsIndex:endIndex,5) = 0;%link_weight_diff
                         ACTIONS(actionsIndex:endIndex,6) =  data_weight(1);
                         ACTIONS(actionsIndex:endIndex,7) =  virus_install_cost;

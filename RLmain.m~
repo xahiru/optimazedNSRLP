@@ -74,7 +74,6 @@ points(DEFENDER) = DeffenderPoints;
 graphData = zeros(gameRounds,3,3,5); %gameRound, reward vector length, three tyeps of test (n), 5 loops 
    
 GSize = size(GTwo,1) * size(GTwo,2);
-QVTSIZe = GSize +2 +3 +1;
 
  tic
 for m = 1 : 2
@@ -89,7 +88,7 @@ for m = 1 : 2
         points(DEFENDER) = DeffenderPoints;
         
 %         QTABLE = nan(int16(gameRounds * 2 * points(ATTACKER) / service_cost) ,4); %4 dim
-        QTABLE = nan(int16(gameRounds * 2 * points(ATTACKER) / service_cost),QVTSIZe);
+        QTABLE = nan(int16(gameRounds * 2 * points(ATTACKER) / service_cost),GSize +2 +3);
        
         qTableSize = length(QTABLE(:,1));      
     
@@ -145,7 +144,13 @@ for m = 1 : 2
                     A_VALID_ACTIONS = getValidActions(G2, ATTACKER,points(ATTACKER),cost_vector);
                     D_VALID_ACTIONS = getValidActions(G2, DEFENDER,points(DEFENDER), cost_vector);
                     QTABLE =  updateQValue(G1,G2,D_ACTION(2),D_PARETO_ACTIONS(D_ACTION(1),:),transition_reward, QTABLE, qTableSize, learnRate, discount, D_VALID_ACTIONS,DEFENDER);
-                   
+                    % Get valid action
+                    A_VALID_ACTIONS = getValidActions(G2, ATTACKER,points(ATTACKER),cost_vector);
+                    D_VALID_ACTIONS = getValidActions(G2, DEFENDER,points(DEFENDER), cost_vector);
+
+
+                    QTABLE =  updateQValue(G1,G2,D_ACTION(2),D_PARETO_ACTIONS(D_ACTION(1),:),transition_reward, QTABLE, qTableSize, learnRate, discount, D_VALID_ACTIONS,DEFENDER); 
+
                     
                 case 2
                   

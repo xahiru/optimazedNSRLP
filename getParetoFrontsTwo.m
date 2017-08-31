@@ -1,4 +1,4 @@
-function [ COMBINED_REWARD ] = getParetoFrontsTwo( ATTACK_ACTIONS,DEFENCE_ACTIONS, G, player )
+function [ ACTIONS ] = getParetoFrontsTwo( ATTACK_ACTIONS,DEFENCE_ACTIONS, G, player )
 
 ATTACKER = 1;
 DEFENDER = 2;
@@ -25,7 +25,7 @@ for n = 1: DEF_length
          temp_reward = state_reward + temp_def + temp_attack;
          temp_reward(3) = temp_attack(3) - temp_def(3);
              
-         COMBINED_REWARD(n,m, 1:3,1) = temp_attack;
+         COMBINED_REWARD(n,m, 1:3,1) = temp_reward;
          COMBINED_REWARD(n,m, :,2) = 1; %just using one dim of 3
          end
         
@@ -103,7 +103,7 @@ for d1 =1:  DEF_length
 
                 if( dominated )
                     % remove current defense  
-                    ACTIONS(d1,1) = 0;
+                    ACTIONS(d1,:) = nan;
                     break;
                 end
             end
